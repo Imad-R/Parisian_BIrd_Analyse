@@ -1,0 +1,132 @@
+---
+title: "PCA_Code"
+author: "Imad R"
+date: "16/05/2023"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<body style="font-family:'Calibri'">
+<h1 style="color: red"><u>Introduction :</u></h1>
+
+*Ce code a pour but de calculer une ACP sur le jeux de données concernant l'observation mensuelle d'espèce d'oiseau dans un parc parisien.*
+
+<h1 style="color: #f00020"><u> Préparatif :</u></h1>
+**Tout d'abord chargeons les librairies utiles et les données(modifier au préalable sur python en ne gardant que les espèce ayant au moins une apparition sur chaque mois):**
+
+```{r}
+#Chargement des librairies 
+library(ggplot2)
+library(FactoMineR)
+library(ggforce)
+library(factoextra)
+library(corrplot)
+```
+
+
+```{r}
+#Chargement des données
+data <- read.csv("data_2.csv", sep = ";", encoding = "UTF-8", row.names = "Mois")
+```
+
+*Appliquons l'ACP sur les données :*
+
+```{r}
+dataPCA = PCA(data, ncp = 13, graph = FALSE)
+```
+
+<h2> 7. Appliquez une ACP. Affichez les deux premières composantes principales sous forme d’un nuage de points pour visualiser les résultats. Identifiez chaque mois par une couleur différente, et ajoutez une légende. Ajoutez aussi sur les axes le pourcentage de variance expliquée par chaque composante. Commentez.</h2>
+
+```{r}
+options(ggrepel.max.overlaps = Inf)
+
+#Graphique sur la qualité de représentation des modalités variables, à l'aide du cos2
+
+fviz_pca_ind(dataPCA, col.ind = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE # Avoid text overlapping (slow if many points)
+             )
+
+#Cos2 des individus aux axes
+corrplot(dataPCA$ind$cos2, is.corr = FALSE)
+
+#Contribution des individus sur les nouvelles variables
+corrplot(dataPCA$ind$contrib, is.corr=FALSE) 
+
+#Contribution des individus sur les deux axes
+#fviz_contrib(dataPCA, choice = "ind", axes = 1:2)
+
+#Qualité de representation des individus sur les deux axes
+#fviz_cos2(dataPCA, choice = "ind", axes = 1:2)
+```
+<h3 style="color:blue">Il y a une certaine concentration d'individus au centre du graphique. On remarque que certains mois présentent des similarités, tels que juillet et avril. On distingue même un groupe constitué des mois d'avril, juillet, février et août. En revanche, les mois de janvier et mars se distinguent nettement des autres. Le mois de janvier peut être considéré comme atypique en raison de sa distance par rapport aux autres mois.</h3>
+
+<h3 style="color:blue">La plupart des individus sont bien représentés sur les deux axes, à l'exception des mois de février, août et novembre. Le mois de septembre présente une particularité, car sa qualité de représentation est uniformément répartie sur les 6 premiers axes. En ce qui concerne la contribution aux axes, on constate que le mois de janvier a la plus forte contribution sur le deuxième axe, tout comme le mois de mai. De plus, les mois de janvier et de mars sont ceux qui contribuent le plus au premier axe.</h3>
+
+
+<h2>8. Affichez la variance de chaque variable obtenue dans l’espace de l’ACP. Commentez. Quelle est la définition de la variance expliquée ? Quelle est le lien avec les variances que vous venez de calculer ?</h2>
+
+```{r}
+#Variance de chaque variable obtenue dans l'espace de l'ACP
+fviz_eig(dataPCA, addlabels = TRUE)
+
+```
+
+<h3 style="color:blue">On remarque que les deux premières nouvelles variables, qui ont les plus grandes valeurs propres, résument ensemble environ 68,2 % des informations, ce qui correspond à 68,2 % de la variance expliquée du jeu de données. Nous pouvons donc affirmer que notre ACP a bien fonctionné. De plus, on remarque que toutes les variables contribuent assez faiblement aux deux axes. La variable "perruche à collier" est celle qui contribue le plus à l'axe 1, tandis que le "pigeon biset" contribue le plus à l'axe 2.</h3>
+
+<h3 style="color:blue">La variance expliquée est une mesure de la quantité d'information contenue dans chaque composante principale. Elle représente la proportion de la variance totale des données qui est expliquée par chaque composante principale, et cela est déterminé par la magnitude de leur valeur propre. Les composantes principales sont ordonnées selon leur variance expliquée décroissante. Les premières composantes principales expliquent la plus grande part de la variance totale, tandis que les dernières en expliquent une part plus faible.</h3>
+
+<h3 style="color:blue">La variance expliquée par chaque composante principale est directement liée aux variances des variables dans l'espace de l'ACP. Les variances des variables contribuent à la variance totale des données, et la variance expliquée par chaque composante principale est calculée en divisant sa valeur propre (qui représente la variance qu'elle explique) par la somme des valeurs propres de toutes les composantes principales. Ainsi, les variances des variables sont impliquées dans le calcul de la variance expliquée de chaque composante principale. Cela permet de mesurer la contribution de chaque variable à la variance totale des données dans l'ACP.</h3>
+
+<h2> 9. Affichez et commentez le cercle de corrélation. Permet-il de retrouver les résultats des questions 3 et 6 ?</h2>
+
+```{r}
+#Cercle des corrélation
+fviz_pca_var(dataPCA, col.var="cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE # Avoid text overlapping
+             )
+
+#Qualité de representation des variables sur les axes principaux avec le cos2
+corrplot(dataPCA$var$cos2, is.corr=FALSE)
+
+# Contribution des espèces sur les nouvelles variables
+corrplot(dataPCA$var$contrib, is.corr=FALSE)
+
+#Contribution des variables sur les deux axes
+#fviz_contrib(dataPCA, choice = "var", axes = 1:2)
+
+#Qualité de representation des variables sur les deux axes
+#fviz_cos2(dataPCA, choice = "var", axes = 1:2)
+```
+
+
+<h3 style="color:blue">On remarque que l'espèce Geai des chênes est mal représentée sur les deux axes, ce qui peut s'expliquer par les faibles valeurs de cos2 sur ces axes. En effet, d'après le deuxième graphique, on observe que l'espèce Geai des chênes a un cos2 élevé sur la troisième variable, ce qui indique une meilleure représentation sur cette variable. Cette espèce est unique dans ce jeu de données. En revanche, la plupart des autres espèces sont bien représentées sur les deux axes, avec des valeurs de cos2 satisfaisantes, notamment l'espèce Mésange Charbonnière qui est très bien représentée sur les deux axes avec un cos2 d'environ 0.8.</h3>
+
+<h3 style="color:blue">La contribution est plutôt bien répartie entre les variables sur le premier axe, mais on observe une plus grande disparité dans la contribution sur le deuxième axe. En effet, on constate que le Pigeon ramier et le Pigeon biset contribuent le plus à cet axe.</h3>
+
+<h3 style="color:blue">Le cercle des corrélations ne fournit pas d'informations sur la variance des variables, il ne nous permet donc pas de répondre à la question 3 concernant la variance. En ce qui concerne la question 6, le cercle des corrélations nous donne uniquement des informations sur le signe des corrélations et non sur leur intensité. Cependant, la proximité des variables sur le cercle suggère une relation linéaire étroite entre elles. Nous pouvons effectivement observer une corrélation positive entre la Perruche à collier et la Mésange charbonnière, mais nous ne pouvons pas quantifier cette corrélation de manière précise à partir du cercle des corrélations.</h3>
+
+
+<h2>10. Affichez la figure de la question 7, mais en y superposant cette fois-ci le vecteur associé à la variable perruche à collier affiché à la question 9. En déduire le mois où on observe le plus de perruches à collier.</h2>
+```{r}
+#Projection des variables et des individus
+fviz_pca_biplot(dataPCA, repel = TRUE)
+```
+
+<h3 style="color:blue">L'axe 1 de l'ACP est caractérisé par les variables et espèces d'oiseaux qui ont une forte contribution positive ou négative. Sur cet axe, nous observons que les mois de Janvier, Mars, Juin et Novembre ont des valeurs élevées sur Dim.1, ce qui indique qu'ils sont positivement associés à la présence des espèces suivantes : Corneille Noir, Pie Bavarde, Perruche à collier, Rougegorge familier, Mésange bleue, Mésange Charbonnière, Merle Noir, Trigolodyte Mignon et Grimpereau des Jardins. Cela suggère que ces espèces sont plus fréquemment observées pendant ces mois.</h3>
+
+<h3 style="color:blue">L'axe 2 de l'ACP est caractérisé par les variables et espèces d'oiseaux qui ont une forte contribution positive ou négative. Sur cet axe, nous observons que les mois de Mars, Mai et Janvier ont des valeurs élevées sur Dim.2, ce qui indique une association positive avec la présence des Pigeon Ramier et Pigeon Biset. Ces mois sont donc associés à une fréquence plus élevée d'observations de ces espèces.</h3>
+
+<h3 style="color:blue">Pour trouver un nom approprié aux deux premiers axes, on peut considérer les caractéristiques communes des espèces qui sont fortement corrélées positivement ou négativement avec ces axes. Si on devrait donner un nom au deux nouveaux axes alors : 
+<br>
+<hr>
+Le premier axe s'appelerais "Oiseaux ayant un habitat urbain" : Cet axe peut être associé aux espèces qui sont souvent observées dans des habitats urbains et qui ont une adaptation particulière à ces environnements. Les espèces fortement corrélées positivement avec cet axe, telles que la Corneille Noir, la Pie Bavarde, la Perruche à collier, le Rougegorge familier, la Mésange bleue, la Mésange Charbonnière, le Merle Noir, le Trigolodyte Mignon et le Grimpereau des Jardins, sont toutes des espèces d'oiseaux couramment trouvées dans les parcs et jardins urbains.
+<br>
+<hr>
+Le deuxième axe s'appelerais : "Oiseaux ayant des habitats diversifiés" : Cet axe peut être associé à la diversité des habitats fréquentés par les espèces d'oiseaux. Le Pigeon biset est fortement corrélé positivement avec cet axe, ce qui peut indiquer une préférence pour les habitats plus variés, tandis que le Pigeon Ramier est fortement corrélé négativement, suggérant une préférence pour des habitats spécifiques. Cela peut refléter la différence de comportement ou de niches écologiques entre ces deux espèces de pigeons.</h3>
+</body>

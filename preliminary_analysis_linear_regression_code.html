@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Code_Analyse préliminaire_Linear_Regression</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>preliminary_analysis_linear_regression_code</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -15241,105 +15241,6 @@ L&#39;espèce &#39;Sittelle torchepot&#39; n&#39;a pas été repérée en &#39;d
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[81]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_2</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[81]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>Mois
-janvier      179
-mars         177
-juin         134
-novembre     121
-septembre    119
-aout          98
-mai           92
-fevrier       74
-juillet       69
-octobre       67
-avril         61
-decembre      38
-dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[82]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_2</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[82]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>Pigeon ramier             232
-Merle noir                179
-Corneille noire           161
-Rougegorge familier       102
-Mésange bleue             100
-Perruche à collier         99
-Mésange charbonnière       88
-Pie bavarde                75
-Pigeon biset               63
-Troglodyte mignon          61
-Grimpereau des jardins     44
-Geai des chênes            25
-dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -16848,10 +16749,22 @@ On accepte H0 donc on rejette H1 au seuil de 5.0%. Donc la probabilité que la p
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="15.-Combien-y-a-t-il-de-combinaisons-possibles-de-variables-&#8211;-en-excluant-la-variable-Perruche-&#224;-collier-?-Appliquez-une-r&#233;gression-lin&#233;aire-entre-la-variable-cible-Perruche-&#224;-collier-et-chaque-combinaison-possible-de-variables-autres.-Quelle-est-la-valeur-maximale-que-vous-obtenez-pour-le-coefficient-de-d&#233;termination-ajust&#233;-?-Affichez-les-variables-correspondantes,-ainsi-que-les-param&#232;tres-&#946;i-obtenus.-Commentez.">15. Combien y a-t-il de combinaisons possibles de variables &#8211; en excluant la variable Perruche &#224; collier ? Appliquez une r&#233;gression lin&#233;aire entre la variable cible Perruche &#224; collier et chaque combinaison possible de variables autres. Quelle est la valeur maximale que vous obtenez pour le coefficient de d&#233;termination ajust&#233; ? Affichez les variables correspondantes, ainsi que les param&#232;tres &#946;i obtenus. Commentez.<a class="anchor-link" href="#15.-Combien-y-a-t-il-de-combinaisons-possibles-de-variables-&#8211;-en-excluant-la-variable-Perruche-&#224;-collier-?-Appliquez-une-r&#233;gression-lin&#233;aire-entre-la-variable-cible-Perruche-&#224;-collier-et-chaque-combinaison-possible-de-variables-autres.-Quelle-est-la-valeur-maximale-que-vous-obtenez-pour-le-coefficient-de-d&#233;termination-ajust&#233;-?-Affichez-les-variables-correspondantes,-ainsi-que-les-param&#232;tres-&#946;i-obtenus.-Commentez.">&#182;</a></h2>
 </div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 style="color:blue"> 
+
+Pour calculer toutes les combinaison distincte possible il faut utiliser la formule suivante : 
+<br><hr>
+Total des combinaison possible = $\sum_{k=1}^{11} \binom{11}{k}$
+<br><hr>
+Retranscrivons ça en code.
+</h3>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[111]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[123]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Exclure la variable cible &quot;Perruche à collier&quot; du DataFrame</span>
@@ -16893,10 +16806,10 @@ On accepte H0 donc on rejette H1 au seuil de 5.0%. Donc la probabilité que la p
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[112]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[124]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialiser une liste pour stocker les résultats</span>
@@ -16905,6 +16818,9 @@ On accepte H0 donc on rejette H1 au seuil de 5.0%. Donc la probabilité que la p
 <span class="n">meilleure_combinaison</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">meilleure_paramètre</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">meilleure_resultat</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span>
+
+<span class="n">c</span><span class="o">=</span><span class="mi">0</span>
 <span class="c1"># Effectuer la régression linéaire pour chaque combinaison</span>
 <span class="k">for</span> <span class="n">combinaison</span> <span class="ow">in</span> <span class="n">combinaisons</span><span class="p">:</span>
     <span class="c1">#Ajout de la constante à la matrice de la combinaison de variables</span>
@@ -16920,12 +16836,14 @@ On accepte H0 donc on rejette H1 au seuil de 5.0%. Donc la probabilité que la p
     <span class="n">coeffs</span> <span class="o">=</span> <span class="n">resultats</span><span class="o">.</span><span class="n">params</span>
     <span class="n">r2</span> <span class="o">=</span> <span class="n">resultats</span><span class="o">.</span><span class="n">rsquared_adj</span>
     
+    
     <span class="c1">#recuperation du meilleur r2 avec la combinaison, les coeficient, et le details du résultat associé</span>
     <span class="k">if</span> <span class="n">r2</span> <span class="o">&gt;</span> <span class="n">meilleur_r2</span><span class="p">:</span>
         <span class="n">meilleur_r2</span> <span class="o">=</span> <span class="n">r2</span>
         <span class="n">meilleure_combinaison</span> <span class="o">=</span> <span class="n">combinaison</span>
         <span class="n">meilleure_paramètre</span> <span class="o">=</span> <span class="n">coeffs</span>
         <span class="n">meilleure_resultat</span> <span class="o">=</span> <span class="n">resultats</span>
+    
     
     <span class="c1"># Ajouter les résultats à la liste</span>
     <span class="n">resultats_combinaisons</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">combinaison</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">,</span> <span class="n">r2</span><span class="p">))</span>
@@ -16940,34 +16858,10 @@ On accepte H0 donc on rejette H1 au seuil de 5.0%. Donc la probabilité que la p
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>C:\Users\imadr\anaconda3\lib\site-packages\statsmodels\regression\linear_model.py:1728: RuntimeWarning: divide by zero encountered in true_divide
-  return 1 - (np.divide(self.nobs - self.k_constant, self.df_resid)
-C:\Users\imadr\anaconda3\lib\site-packages\statsmodels\regression\linear_model.py:1728: RuntimeWarning: invalid value encountered in double_scalars
-  return 1 - (np.divide(self.nobs - self.k_constant, self.df_resid)
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[113]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[125]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Afficher le DataFrame de résultats</span>
@@ -16987,7 +16881,7 @@ C:\Users\imadr\anaconda3\lib\site-packages\statsmodels\regression\linear_model.p
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[113]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[125]:</div>
 
 
 
@@ -17294,12 +17188,12 @@ question 15 en considérant uniquement ces modèles.</h1>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[117]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[139]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialiser une liste pour stocker les résultats</span>
 <span class="n">resultats_combinaisons</span> <span class="o">=</span> <span class="p">[]</span>
-
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
 
 <span class="c1"># Effectuer la régression linéaire pour chaque combinaison</span>
 <span class="k">for</span> <span class="n">combinaison</span> <span class="ow">in</span> <span class="n">combinaisons</span><span class="p">:</span>
@@ -17317,7 +17211,7 @@ question 15 en considérant uniquement ces modèles.</h1>
     <span class="c1">#p_values = resultats.pvalues.drop(&#39;const&#39;)  # Exclure la constante</span>
     <span class="n">f_stat</span> <span class="o">=</span> <span class="n">resultats</span><span class="o">.</span><span class="n">f_pvalue</span>
     
-    <span class="k">if</span> <span class="p">(</span><span class="n">f_stat</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">f_stat</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">resultats</span><span class="o">.</span><span class="n">rsquared_adj</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="p">:</span>
         <span class="c1"># Ajouter les résultats à la liste</span>
         <span class="n">resultats_combinaisons</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">combinaison</span><span class="p">,</span> <span class="n">resultats</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">resultats</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">,</span><span class="n">resultats</span><span class="o">.</span><span class="n">f_pvalue</span><span class="p">,</span><span class="n">resultats</span><span class="o">.</span><span class="n">pvalues</span><span class="p">))</span>
 
@@ -17349,7 +17243,7 @@ question 15 en considérant uniquement ces modèles.</h1>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Nombre de modèles avec une relation linéaire significative : 455
+<pre>Nombre de modèles avec une relation linéaire significative : 411
 </pre>
 </div>
 </div>
@@ -17361,7 +17255,7 @@ question 15 en considérant uniquement ces modèles.</h1>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[118]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[141]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_resultats</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;R2_adj&quot;</span><span class="p">],</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -17380,7 +17274,7 @@ question 15 en considérant uniquement ces modèles.</h1>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[118]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[141]:</div>
 
 
 
@@ -17412,7 +17306,7 @@ question 15 en considérant uniquement ces modèles.</h1>
   </thead>
   <tbody>
     <tr>
-      <th>451</th>
+      <th>407</th>
       <td>(Corneille noire, Geai des chênes, Grimpereau ...</td>
       <td>const                    -1.976852
 Corneille n...</td>
@@ -17422,7 +17316,7 @@ Corneille n...</td>
 Corneille n...</td>
     </tr>
     <tr>
-      <th>454</th>
+      <th>410</th>
       <td>(Corneille noire, Geai des chênes, Grimpereau ...</td>
       <td>const                    -2.579226
 Corneille n...</td>
@@ -17432,7 +17326,7 @@ Corneille n...</td>
 Corneille n...</td>
     </tr>
     <tr>
-      <th>453</th>
+      <th>409</th>
       <td>(Corneille noire, Geai des chênes, Mésange ble...</td>
       <td>const                 -6.071198
 Corneille noir...</td>
@@ -17442,7 +17336,7 @@ Corneille noir...</td>
 Corneille noir...</td>
     </tr>
     <tr>
-      <th>428</th>
+      <th>384</th>
       <td>(Corneille noire, Geai des chênes, Grimpereau ...</td>
       <td>const                    -0.300348
 Corneille n...</td>
@@ -17452,7 +17346,7 @@ Corneille n...</td>
 Corneille n...</td>
     </tr>
     <tr>
-      <th>452</th>
+      <th>408</th>
       <td>(Corneille noire, Geai des chênes, Grimpereau ...</td>
       <td>const                    -0.087544
 Corneille n...</td>
@@ -17475,7 +17369,7 @@ Corneille n...</td>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[119]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[142]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Trouver l&#39;index de la ligne avec le R2 max</span>
